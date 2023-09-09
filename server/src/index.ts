@@ -15,11 +15,12 @@ app.use(morgan("dev"));
 
 app.use("/api/tasks", taskRouter);
 
-app.get("*", (_, res) => {
-	res.sendFile(path.join(__dirname, "../../client/dist/index.html"));
-});
+const client = path.join(__dirname, "../../client/dist");
 
-const PORT = process.env.PORT || 3000;
+app.use(express.static(client));
+app.use("*", (_, res) => res.sendFile(client));
+
+const PORT = Number(process.env.PORT) || 3000;
 
 app.listen(PORT, () => {
 	console.log(`Server running on port ${PORT}`);

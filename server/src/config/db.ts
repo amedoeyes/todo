@@ -12,7 +12,7 @@ async function connect() {
 			console.error("MONGODB_URI is not defined");
 		}
 	} catch (error) {
-		console.error(`Error connecting to MongoDB: ${error}`);
+		console.error(`MongoDB ${error}`);
 	}
 }
 
