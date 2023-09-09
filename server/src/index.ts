@@ -1,12 +1,9 @@
 import cors from "cors";
-import dotenv from "dotenv";
 import express from "express";
 import morgan from "morgan";
 import path from "path";
 import db from "./config/db";
 import taskRouter from "./routes/api/taskRoutes";
-
-dotenv.config();
 
 db.connect();
 
