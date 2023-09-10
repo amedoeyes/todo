@@ -1,13 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { tasksApi } from "./services/tasksApi";
-import tasksReducer from "./slices/tasksSlice";
+import filterdTasksSlice from "./slices/tasksSlice";
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 
 const store = configureStore({
 	reducer: {
-		tasks: tasksReducer,
+		tasks: filterdTasksSlice.reducer,
 
 		[tasksApi.reducerPath]: tasksApi.reducer,
 	},

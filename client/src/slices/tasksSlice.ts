@@ -1,32 +1,51 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { Task } from "../types";
 
-const initialState: Task[] = [];
+type InitialState = {
+	tasks: Task[];
+	filteredTasks: Task[];
+};
+
+const initialState: InitialState = {
+	tasks: [],
+	filteredTasks: [],
+};
 
 const tasksSlice = createSlice({
 	name: "tasks",
 	initialState,
 	reducers: {
-		addTasks: (state, action) => {
-			state = action.payload;
-			return state;
-		},
-		addTask: (state, action) => {
-			state.push(action.payload);
-			return state;
-		},
-		updateTask: (state, action) => {
-			return state.map((task) => {
-				if (task.id === action.payload.id) return action.payload;
+		setTasks(state, action) {
+			state.tasks = action.payload;
+			state.filteredTasks = action.payload;
 
-				return task;
-			});
+			return state;
 		},
-		removeTask: (state, action) => {
-			return state.filter((task) => task.id !== action.payload);
+		filterTasksBySearch(state, action) {
+			if (action.payload) {
+				state.filteredTasks = state.tasks.filter((task) => {
+					const title = task.title.toLowerCase();
+					const description = task.description.toLowerCase();
+					const search = action.payload.toLowerCase();
+
+					if (title.includes(search)) {
+						return true;
+					}
+
+					if (description.includes(search)) {
+						return true;
+					}
+
+					return false;
+				});
+			} else {
+				state.filteredTasks = state.tasks;
+			}
+
+			return state;
 		},
 	},
 });
 
-export const { addTasks, addTask, updateTask, removeTask } = tasksSlice.actions;
-export default tasksSlice.reducer;
+export const { setTasks, filterTasksBySearch } = tasksSlice.actions;
+export default tasksSlice;

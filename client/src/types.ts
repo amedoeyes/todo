@@ -7,3 +7,10 @@ export type Task = {
 	status: "pending" | "done";
 	isLate: boolean;
 };
+
+export type TaskFormValues = {
+	title: string;
+	description: string;
+	dueDate: Date;
+	creationDate?: Date;
+};
