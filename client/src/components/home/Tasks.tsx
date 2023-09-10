@@ -21,7 +21,7 @@ export default function Tasks() {
 				spacing={1}
 				m="auto"
 				sx={{
-					maxWidth: "30rem",
+					maxWidth: "50rem",
 				}}
 			>
 				<Skeleton variant="rectangular" width="100%" height="5rem" />
@@ -43,7 +43,7 @@ export default function Tasks() {
 			spacing={1}
 			m="auto"
 			sx={{
-				maxWidth: "30rem",
+				maxWidth: "50rem",
 			}}
 		>
 			{filteredTasks.filteredTasks.map((task) => (

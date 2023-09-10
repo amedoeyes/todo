@@ -14,7 +14,16 @@ type TaskFormDialogprops = {
 
 export default function TaskFormDialog(props: TaskFormDialogprops) {
 	return (
-		<Dialog open={props.open} onClose={props.onClose}>
+		<Dialog
+			open={props.open}
+			onClose={props.onClose}
+			fullWidth
+			PaperProps={{
+				sx: {
+					maxWidth: "30rem",
+				},
+			}}
+		>
 			<DialogTitle textAlign="center">
 				{props.title || "Task Form"}
 			</DialogTitle>

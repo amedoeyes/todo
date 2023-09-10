@@ -54,9 +54,10 @@ export default function TaskCardDetailsDialog(
 		<Dialog
 			open={props.open}
 			onClose={props.onClose}
+			fullWidth
 			PaperProps={{
 				sx: {
-					minWidth: "10rem",
+					maxWidth: "30rem",
 				},
 			}}
 		>
